@@ -1,0 +1,23 @@
+[
+  {
+    "id": 0,
+    "title": "Моя тетрадь тренировок",
+    "description": null,
+    "act": false,
+    "nav": true
+  },
+  {
+    "id": 1,
+    "title": "Мои результаты",
+    "description": "Открыть таблицу замеров",
+    "act": true,
+    "nav": false
+  },
+  {
+    "id": 2,
+    "title": "Моя тренера",
+    "description": "Открыть список тренеров",
+    "act": false,
+    "nav": false
+  }
+]
