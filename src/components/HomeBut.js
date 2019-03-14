@@ -6,7 +6,7 @@ const HomeBut = ({data, navigate}) => {
   const {nav, title, description, act} = data
 
   return (
-    <TouchableHighlight style={[container, act ? active : deActive]} onPress={() => (nav ? navigate('Days') : '')}>
+    <TouchableHighlight style={[container, act ? active : deActive]} onPress={() => (nav ? navigate('Calendar') : navigate('Chart'))}>
       <View style={content}>
         <View style={viewtext}>
           <Text style={h2}>{title}</Text>

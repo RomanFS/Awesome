@@ -1,6 +1,8 @@
-export const DAYLIST_ACTION = 'DAYLIST_ACTION'
+import сurrentDate from '../../../functions'
 
-export const getDay = (newNum) => ({
-  type: DAYLIST_ACTION,
-  playload: newNum
+export const DEBUG_ACTION = 'DEBUG_ACTION'
+
+export const getDate = ({
+  type: DEBUG_ACTION,
+  playload: сurrentDate
 })

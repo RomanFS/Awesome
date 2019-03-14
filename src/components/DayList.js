@@ -29,22 +29,6 @@ export default class DayList extends Component {
   }
 }
 
-/*{ trainlist.map(item => (
-  <TouchableHighlight
-    key={item.title} style={header}
-    onPress={() => {
-      navigate('DayContainer')
-      console.log(this.props)
-    }}
-  >
-    <View>
-      <Text style={h1}>{item.title}</Text>
-      <Text style={h3b}>{item.subTitle}</Text>
-    </View>
-  </TouchableHighlight>
-))
-}*/
-
 const styles = StyleSheet.create({
   maincontainer: {
     flex: 1,

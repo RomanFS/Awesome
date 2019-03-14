@@ -1,18 +1,16 @@
 import Immutable from 'seamless-immutable'
-import { DAYLIST_ACTION } from './actions'
-import trainlist from '../../services/trainlist'
+import { DEBUG_ACTION } from './actions'
 
 const initialState = Immutable({
-  trainlist,
-  num: null
+  iDate: 'd'
 })
 
 export default function daylistReducer(state = initialState, action) {
   switch (action.type) {
-  case DAYLIST_ACTION:
+  case DEBUG_ACTION:
     return {
       ...state,
-      num: action.playload
+      iDate: action.playload
     }
   default: {
     return state

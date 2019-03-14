@@ -3,10 +3,6 @@ import { ImageBackground, View, Text, StyleSheet, TouchableHighlight, ScrollView
 import { w, h, bgColor, white, blueText } from '../../constants'
 
 export default class Day extends Component {
-  componentDidMount() {
-    console.log(this.props.daylist.trainlist[this.props.daylist.num].src)
-  }
-
   getImage(name) {
     switch (name) {
     case 'body': return require('../../Images/b.jpg')
@@ -16,14 +12,14 @@ export default class Day extends Component {
   }
 
   render() {
-    const { bgImg, btnText, firstScreen, container, dash, button, h1, h2, h3b, elements } = styles
-    const { description, title, subTitle, type } = this.props.daylist.trainlist[this.props.daylist.num]
+    const { content, dash2, bgImg, btnText, firstScreen, container, dash, button, h1, h2, h3b, elements } = styles
+    const { description, name, text, type } = this.props.daylist.trainlist[this.props.daylist.num]
 
     return (
       <ScrollView style={container}>
         <ImageBackground source={this.getImage(type)} style={bgImg}>
           <View style={firstScreen}>
-            <Text title='day_num' style={h1}>{title}{'\n'}{subTitle}</Text>
+            <Text title='day_num' style={h1}>{name}{'\n'}{text}</Text>
             <TouchableHighlight title='СТАРТ' style={button}>
               <View>
                 <Text style={btnText}>СТАРТ</Text>
@@ -35,17 +31,19 @@ export default class Day extends Component {
         <View>
           { description.map(subItem => (
             <TouchableHighlight key={subItem.id} style={elements} >
-              <View>
-                <Text style={h2}>{subItem.title}</Text>
-                <Text style={h3b}>{subItem.subTitle} {subItem.time !== 0 ? (subItem.time, ' минут') : ''}</Text>
-                <Text>▼</Text>
+              <View style={content}>
+                <View style={{flex: 6}}>
+                  <Text style={h2}>{subItem.title}</Text>
+                  <Text style={h3b}>{subItem.subTitle} {subItem.time !== 0 ? (subItem.time, ' минут') : ''}</Text>
+                </View>
+                <Text style={[h2, dash2]}>▼</Text>
               </View>
             </TouchableHighlight>
           ))
           }
         </View>
         <View>
-          <Text title='statistic'>Ты Рома</Text>
+          <Text title='statistic'>. . .</Text>
         </View>
       </ScrollView>
     )
@@ -55,6 +53,11 @@ export default class Day extends Component {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: bgColor
+  },
+  content: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center'
   },
   bgImg: {
     width: w,
@@ -75,6 +78,8 @@ const styles = StyleSheet.create({
   },
   h3b: {
     color: blueText
+  },
+  dash2: {
   },
   dash: {
     textShadowColor: 'rgba(0, 0, 0, 0.75)',
@@ -104,6 +109,7 @@ const styles = StyleSheet.create({
     fontWeight: '900'
   },
   elements: {
+    padding: 15,
     marginVertical: 3,
     borderBottomWidth: 1,
     borderColor: '#fff'

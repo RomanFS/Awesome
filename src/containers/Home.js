@@ -10,13 +10,17 @@ export default class Home extends Component {
     headerVisible: false,
     header: null
   }
-  
+
   state = {
     data: []
   }
 
   componentDidMount() {
     this.setState({data: homeData})
+    /*const date = new Date().getDate()
+    const month = new Date().getMonth() + 1
+    const year = new Date().getFullYear()
+    console.log(`${date}.${month}.${year}`)*/
   }
 
   render() {
