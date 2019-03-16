@@ -9,7 +9,11 @@ class Days extends Component {
     headerVisible: false,
     header: null
   }
-  
+
+  componentDidMount() {
+    console.log(this.props)
+  }
+
   render() {
     const {navigate, setParams} = this.props.navigation
     return (

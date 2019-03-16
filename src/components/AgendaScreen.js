@@ -28,31 +28,21 @@ export default class AgendaScreen extends Component {
   }
 
   loadItems(day) {
-    this.setState({
-      items: {
-        ...this.state.items,
-        [day.dateString]: [{
-          text: 'item 1 - any js object',
-          name: 'День 1'
-        }]
-      }
-    })
-    setTimeout(() => { // ВСЕ: проверяет есть ли элемент, в случае "неудачи" создает новый и записывает его в стейт
-      for (let i = -5; i < 5; i++) { // начало цикла добавления элементов
-        const time = day.timestamp + (i * 24 * 60 * 60 * 1000) // преобразование каждого элемента
-        const strTime = this.timeToString(time) // в строковую дату
-        if (!this.state.items[strTime]) { // присутствует ли элемент в items? если нет, то...
-          this.state.items[strTime] = [] // создание массива (с ключем элемента)
-          const numItems = 1 // количество дочерних элементов
-          for (let j = 0; j < numItems; j++) { // заполнение элемента...
-            this.state.items[strTime].push({
-              name: 'Отдых',
-              height: h / 8
-            })
-          }
+    console.log(this.props)
+    for (let i = 0; i < 10; i++) { // начало цикла добавления элементов
+      const time = day.timestamp + (i * 24 * 60 * 60 * 1000) // преобразование каждого элемента
+      const strTime = this.timeToString(time) // в строковую дату
+      if (!this.state.items[strTime]) { // присутствует ли элемент в items? если нет, то...
+        this.state.items[strTime] = [] // создание массива (с ключем элемента)
+        const numItems = 1 // количество дочерних элементов
+        for (let j = 0; j < numItems; j++) { // заполнение элемента...
+          this.state.items[strTime].push({
+            name: 'Отдых',
+            height: h / 8
+          })
         }
       }
-    }, 10) // задержка прогрузки
+    }
   }
 
   rowHasChanged(r1, r2) {
@@ -91,9 +81,8 @@ export default class AgendaScreen extends Component {
   render() {
     return (
       <Agenda
-        current={'2019-03-08'}
-        minDate={'2019-03-05'}
-        onDayPress={(day) => { console.log('day pressed') }}
+        current={сurrentDate}
+        minDate={сurrentDate}
         items={this.state.items}
         loadItemsForMonth={this.loadItems}
         //selected={'2019-05-16'}

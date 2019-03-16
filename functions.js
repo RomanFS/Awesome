@@ -1,12 +1,19 @@
+import data from './src/services/trainlist1'
+
 export function сurrentDate() {
-  let day = new Date().getDate() //Current Day
-  if (day < 10) { day = `0${day}` }
-
-  let month = new Date().getMonth() + 1 //Current Month
-  if (month < 10) { month = `0${month}` }
-
-  const year = new Date().getFullYear() //Current Year
-  const date = `${year}-${month}-${day}`
-
+  const date = new Date.now().toISOString().split('T')[0]
   return date
+}
+
+export function getItems() {
+  const items = {}
+  const date = Date.now()
+  for (let i = 0; i < data.length; i++) { // начало цикла добавления элементов
+    const time = date + (i * 24 * 60 * 60 * 1000)
+    const strTime = new Date(time).toISOString().split('T')[0] // в строковую дату
+
+    const {name, text} = data[i]
+    items[strTime] = [{name, text}]
+  }
+  return items
 }
